@@ -20,18 +20,14 @@ class Program:
                 state = randint(0, 1)
                 cell = Cell(state, x, y)
                 row.append(cell)
+                self.all_sprites.add(cell)
             self.board.append(row)
 
-        for row in self.board:
-            for cell in row:
-                self.all_sprites.add(cell)
-
     def run(self):
-        while self.running:
-            self.clock.tick(FPS)
-            self.events()
-            self.update()
-            self.draw()
+        self.clock.tick(FPS)
+        self.events()
+        self.update()
+        self.draw()
 
     def events(self):
         for event in pg.event.get():
@@ -46,14 +42,16 @@ class Program:
                 cell = self.board[x][y]
                 num_neighbors = 0
                 for i in range(8):
-                    wrap_row = (cell.x + dx[i] + NUM_ROWS ) % NUM_ROWS
-                    wrap_column = (cell.y + dy[i] + NUM_COLUMNS ) % NUM_COLUMNS
+                    # cells on the edge of the board must wrap around
+                    wrap_row = (cell.x + dx[i] + NUM_ROWS) % NUM_ROWS
+                    wrap_column = (cell.y + dy[i] + NUM_COLUMNS) % NUM_COLUMNS
                     num_neighbors += self.board[wrap_row][wrap_column].state
-                if cell.state == False and num_neighbors == 3:
+                if not cell.state and num_neighbors == 3:
                     change_state.append((x, y))
                 elif cell.state == 1 and (num_neighbors < 2 or num_neighbors > 3):
                     change_state.append((x, y))
 
+        # must separately reiterate so the board updates in unison
         for cell in change_state:
             self.board[cell[0]][cell[1]].change_state()
     
