@@ -1,10 +1,10 @@
-# Game-Of-Life
+# Game Of Life
 A Python / Pygame simulation of Conway's Game of Life
 
-The entire simulation runs on a Program Class. Once an instance is initialized, the program creates a new board. Each cell is its own class and is able to change states. 
+The entire simulation runs on a Class called `Program`. Once an instance is initialized, the program creates a new board. Each cell is its own class and is able to change states. 
 Once initialized, the program object begins an infinite while loop until the user exits the program.
 
-There is a 2D Grid of cells. Each cell checks its 4 neighbors. 
+There is a 2D Grid of cells. Each cell checks its 8 neighbors. 
 
 1) Every live cell with 2 or 3 neighbors lives on.
 2) Every live cell with 4 neighbors dies due to overpopulation.
