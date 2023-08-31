@@ -11,4 +11,4 @@ There is a 2D Grid of cells. Each cell checks its 8 neighbors.
 3) Every live cell with 1 neighbor dies due to underpopulation.
 4) Every dead cell with 3 neighbors is reborn due to reproduction.
 
-<img width="481" alt="Screen Shot 2023-01-02 at 4 25 03 PM" src="https://user-images.githubusercontent.com/53412192/210281828-762512ce-5a9e-40a6-a653-7eef12620b32.png">
+https://github.com/joshualiu555/Game-Of-Life/assets/53412192/9d9ba153-121a-4040-98fe-ec7822718e38
